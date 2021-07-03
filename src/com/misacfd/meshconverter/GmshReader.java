@@ -94,10 +94,9 @@ public class GmshReader {
         File file = new File(getfName());
         BufferedReader br = new BufferedReader(new FileReader(file));
 
-        String st;
-        while ((st = br.readLine()) != null) {
-            System.out.println(String.format("Mesh file to be processed : %s", st));
-        }
+        String st = br.readLine();
+
+        System.out.println(String.format("Mesh file to be processed : %s", st));
 
         StringBuilder mshFile = new StringBuilder(st).append(".msh");
 
