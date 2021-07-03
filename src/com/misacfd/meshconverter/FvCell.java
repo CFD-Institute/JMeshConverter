@@ -1,13 +1,14 @@
 package com.misacfd.meshconverter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FvCell {
-    long ident;
-    List<Point> vertex;
-    List<Face> faces;
-    List<FvCell> neighbors;
-    double vol;
+    private long ident;
+    private List<Point> vertex;
+    private List<Face> faces;
+    private List<FvCell> neighbors;
+    private double vol;
 
     public FvCell(long ident, List<Point> vertex, List<Face> faces, List<FvCell> neighbors, double vol) {
         this.ident = ident;
@@ -18,7 +19,11 @@ public class FvCell {
     }
 
     public FvCell() {
-
+        ident = 0;
+        vertex = new ArrayList<>();
+        faces = new ArrayList<>();
+        neighbors = new ArrayList<>();
+        vol = 0.0;
     }
 
     public long getIdent() {
@@ -45,12 +50,16 @@ public class FvCell {
         this.faces = faces;
     }
 
-    public List<FvCell> getNeighbor() {
+    public List<FvCell> getNeighbors() {
         return neighbors;
     }
 
-    public void setNeighbor(List<FvCell> neighbors) {
+    public void setNeighbors(List<FvCell> neighbors) {
         this.neighbors = neighbors;
+    }
+
+    public void setNeighbor(FvCell neighbor) {
+        neighbors.add(neighbor);
     }
 
     public double getVol() {

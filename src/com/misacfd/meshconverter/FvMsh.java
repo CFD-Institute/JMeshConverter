@@ -126,9 +126,8 @@ public class FvMsh {
     }
 
     public void assignFaces() {
-        for (long i = 0; i < mshReader.getNbElm(); i++) {
+        for (FvCell currentCell : cells) {
             List<Face> faces = new ArrayList<>();
-            FvCell currentCell = this.cells.get((int) i);
             List<Point> vertex = currentCell.getVertex();
             Point p1 = vertex.get(0);
             Point p2 = vertex.get(1);
@@ -149,7 +148,7 @@ public class FvMsh {
             face.setP1(p1).setP2(p2);
             faces.add(face);
 
-            this.cells.get((int) i).setFaces(faces);
+            currentCell.setFaces(faces);
         }
     }
 
@@ -159,6 +158,125 @@ public class FvMsh {
 
     public void detectNearestNeighbor() {
 
+        for (FvCell currentCell : cells) {
+            long idNode1 = currentCell.getVertex().get(0).getIdent();
+            long idNode2 = currentCell.getVertex().get(1).getIdent();
+
+            for (FvCell anotherCell : cells) {
+                if (anotherCell == currentCell) {
+                    // do nothing
+                } else {
+                    int count = 0;
+
+                    if (idNode1 == anotherCell.getVertex().get(0).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(0).getIdent()) count++;
+
+                    if (idNode1 == anotherCell.getVertex().get(1).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(1).getIdent()) count++;
+
+                    if (idNode1 == anotherCell.getVertex().get(2).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(2).getIdent()) count++;
+
+                    if (idNode1 == anotherCell.getVertex().get(3).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(3).getIdent()) count++;
+
+                    if (count == 2) {
+                        currentCell.setNeighbor(anotherCell);
+                    }
+                }
+
+            }
+        }
+
+        for (FvCell currentCell : cells) {
+            long idNode1 = currentCell.getVertex().get(1).getIdent();
+            long idNode2 = currentCell.getVertex().get(2).getIdent();
+
+            for (FvCell anotherCell : cells) {
+                if (anotherCell == currentCell) {
+                    // do nothing
+                } else {
+                    int count = 0;
+
+                    if (idNode1 == anotherCell.getVertex().get(0).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(0).getIdent()) count++;
+
+                    if (idNode1 == anotherCell.getVertex().get(1).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(1).getIdent()) count++;
+
+                    if (idNode1 == anotherCell.getVertex().get(2).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(2).getIdent()) count++;
+
+                    if (idNode1 == anotherCell.getVertex().get(3).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(3).getIdent()) count++;
+
+                    if (count == 2) {
+                        currentCell.setNeighbor(anotherCell);
+                    }
+                }
+
+            }
+        }
+
+        for (FvCell currentCell : cells) {
+            long idNode1 = currentCell.getVertex().get(2).getIdent();
+            long idNode2 = currentCell.getVertex().get(3).getIdent();
+
+            for (FvCell anotherCell : cells) {
+                if (anotherCell == currentCell) {
+                    // do nothing
+                } else {
+                    int count = 0;
+
+                    if (idNode1 == anotherCell.getVertex().get(0).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(0).getIdent()) count++;
+
+                    if (idNode1 == anotherCell.getVertex().get(1).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(1).getIdent()) count++;
+
+                    if (idNode1 == anotherCell.getVertex().get(2).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(2).getIdent()) count++;
+
+                    if (idNode1 == anotherCell.getVertex().get(3).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(3).getIdent()) count++;
+
+                    if (count == 2) {
+                        currentCell.setNeighbor(anotherCell);
+                    }
+                }
+
+            }
+        }
+
+        for (FvCell currentCell : cells) {
+            long idNode1 = currentCell.getVertex().get(3).getIdent();
+            long idNode2 = currentCell.getVertex().get(0).getIdent();
+
+            for (FvCell anotherCell : cells) {
+                if (anotherCell == currentCell) {
+                    // do nothing
+                } else {
+                    int count = 0;
+
+                    if (idNode1 == anotherCell.getVertex().get(0).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(0).getIdent()) count++;
+
+                    if (idNode1 == anotherCell.getVertex().get(1).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(1).getIdent()) count++;
+
+                    if (idNode1 == anotherCell.getVertex().get(2).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(2).getIdent()) count++;
+
+                    if (idNode1 == anotherCell.getVertex().get(3).getIdent()) count++;
+                    if (idNode2 == anotherCell.getVertex().get(3).getIdent()) count++;
+
+                    if (count == 2) {
+                        currentCell.setNeighbor(anotherCell);
+                    }
+                }
+
+            }
+        }
     }
 
     public void writeVtk() {
