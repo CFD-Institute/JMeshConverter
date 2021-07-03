@@ -1,5 +1,9 @@
 package com.misacfd.meshconverter;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 public class GmshReader {
@@ -10,6 +14,16 @@ public class GmshReader {
     private List<Point> coordNodes;
     private List<NodeIdent> idNodes;
     private List<NodeIdentMsh> idNodesMsh;
+
+    private static GmshReader instance = new GmshReader();
+
+    public static GmshReader getInstance() {
+        return instance;
+    }
+
+    private GmshReader() {
+
+    }
 
     public long getNbNode() {
         return nbNode;
@@ -67,7 +81,59 @@ public class GmshReader {
         this.idNodesMsh = idNodesMsh;
     }
 
-    public void readMesh() {
+    public void readMesh() throws IOException {
+        setfName("input.dat");
+
+        File file = new File(getfName());
+        BufferedReader br = new BufferedReader(new FileReader(file));
+
+        String st;
+        while ((st = br.readLine()) != null) {
+            System.out.println(String.format("Mesh file to be processed : %s", st));
+        }
+
+        StringBuilder mshFile = new StringBuilder(st).append(".msh");
+
+        setfName(mshFile.toString());
+
+        file = new File(getfName());
+        br = new BufferedReader(new FileReader(file));
+
+        String line;
+        String[] tokens;
+
+        line = br.readLine();
+        line = br.readLine();
+        line = br.readLine();
+        line = br.readLine();
+
+        line = br.readLine();
+        nbNode = Integer.parseUnsignedInt(line);
+
+        for (long i = 0; i < nbNode; i++) {
+            line = br.readLine();
+            tokens = line.split(" ");
+
+            long ident = Integer.parseUnsignedInt(tokens[0]);
+            double x = Double.parseDouble(tokens[1]);
+            double y = Double.parseDouble(tokens[2]);
+            double z = Double.parseDouble(tokens[3]);
+
+            Point p =
+                    new Point.Builder()
+                            .setX(x)
+                            .setY(y)
+                            .setZ(z)
+                            .build();
+
+            coordNodes.add(p);
+        }
+
+        line = br.readLine();
+        line = br.readLine();
+
+        line = br.readLine();
+        nbElMsh = Integer.parseUnsignedInt(line);
 
     }
 
