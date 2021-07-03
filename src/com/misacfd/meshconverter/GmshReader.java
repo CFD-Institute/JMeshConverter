@@ -66,4 +66,12 @@ public class GmshReader {
     public void setIdNodesMsh(List<NodeIdentMsh> idNodesMsh) {
         this.idNodesMsh = idNodesMsh;
     }
+
+    public void readMesh() {
+
+    }
+
+    public void constructIdNodes() {
+
+    }
 }
