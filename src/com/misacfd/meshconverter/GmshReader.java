@@ -121,6 +121,7 @@ public class GmshReader {
 
             Point p =
                     new Point.Builder()
+                            .setIdent(ident)
                             .setX(x)
                             .setY(y)
                             .setZ(z)
