@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GmshReader {
@@ -22,7 +23,13 @@ public class GmshReader {
     }
 
     private GmshReader() {
-
+        nbNode = 0;
+        nbElMsh = 0;
+        nbElm = 0;
+        fName = "";
+        coordNodes = new ArrayList<>();
+        idNodes = new ArrayList<>();
+        idNodesMsh = new ArrayList<>();
     }
 
     public long getNbNode() {
@@ -135,8 +142,6 @@ public class GmshReader {
 
         line = br.readLine();
         nbElMsh = Integer.parseUnsignedInt(line);
-
-        setNbElm(0);
 
         for (long i = 0; i < nbElMsh; i++) {
             line = br.readLine();
