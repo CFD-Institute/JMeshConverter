@@ -21,6 +21,6 @@ public class App {
 
         Instant finish = Instant.now();
         long timeElapsed = Duration.between(start, finish).toMillis();
-        System.out.println(String.format("Elapsed time is %s", timeElapsed));
+        System.out.println(String.format("Elapsed time is %s miliSeconds", timeElapsed));
     }
 }
