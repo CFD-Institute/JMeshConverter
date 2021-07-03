@@ -15,20 +15,26 @@ public class Face {
         this.area = area;
     }
 
+    public Face() {
+
+    }
+
     public Point getP1() {
         return p1;
     }
 
-    public void setP1(Point p1) {
+    public Face setP1(Point p1) {
         this.p1 = p1;
+        return this;
     }
 
     public Point getP2() {
         return p2;
     }
 
-    public void setP2(Point p2) {
+    public Face setP2(Point p2) {
         this.p2 = p2;
+        return this;
     }
 
     public Point getCentroid() {

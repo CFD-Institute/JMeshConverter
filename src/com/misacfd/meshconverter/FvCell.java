@@ -6,15 +6,19 @@ public class FvCell {
     long ident;
     List<Point> vertex;
     List<Face> faces;
-    List<FvCell> neighbor;
+    List<FvCell> neighbors;
     double vol;
 
-    public FvCell(long ident, List<Point> vertex, List<Face> faces, List<FvCell> neighbor, double vol) {
+    public FvCell(long ident, List<Point> vertex, List<Face> faces, List<FvCell> neighbors, double vol) {
         this.ident = ident;
         this.vertex = vertex;
         this.faces = faces;
-        this.neighbor = neighbor;
+        this.neighbors = neighbors;
         this.vol = vol;
+    }
+
+    public FvCell() {
+
     }
 
     public long getIdent() {
@@ -42,11 +46,11 @@ public class FvCell {
     }
 
     public List<FvCell> getNeighbor() {
-        return neighbor;
+        return neighbors;
     }
 
-    public void setNeighbor(List<FvCell> neighbor) {
-        this.neighbor = neighbor;
+    public void setNeighbor(List<FvCell> neighbors) {
+        this.neighbors = neighbors;
     }
 
     public double getVol() {
