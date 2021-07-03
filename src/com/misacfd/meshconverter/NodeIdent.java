@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class NodeIdent {
-    private final List<Long> idNode;
+    private final List<Integer> idNode;
 
     protected NodeIdent(Builder<?> builder) {
         this.idNode = Objects.requireNonNull(builder.idNode, "idNode");
@@ -14,17 +14,17 @@ public class NodeIdent {
         return new Builder();
     }
 
-    public List<Long> getIdNode() {
+    public List<Integer> getIdNode() {
         return idNode;
     }
 
     public static class Builder<T extends Builder<T>> {
-        private List<Long> idNode;
+        private List<Integer> idNode;
 
         protected Builder() {
         }
 
-        public T setIdNode(List<Long> idNode) {
+        public T setIdNode(List<Integer> idNode) {
             this.idNode = idNode;
             return (T) this;
         }

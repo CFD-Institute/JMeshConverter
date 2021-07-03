@@ -147,8 +147,15 @@ public class GmshReader {
             line = br.readLine();
             tokens = line.split(" ");
 
+            List<Integer> lineNumbers = new ArrayList<>();
+
+            for (int j = 0; j < tokens.length; j++) {
+                lineNumbers.add(Integer.parseInt(tokens[j]));
+            }
+
             NodeIdentMsh nodeIdentMsh =
                     new NodeIdentMsh.Builder()
+                            .setIdNode(lineNumbers)
                             .setIdent(Integer.parseUnsignedInt(tokens[0]))
                             .setElemTyp(Integer.parseUnsignedInt(tokens[1]))
                             .setNbTags(Integer.parseUnsignedInt(tokens[2]))
