@@ -100,9 +100,9 @@ public class GmshReader {
 
         StringBuilder mshFile = new StringBuilder(st).append(".msh");
 
-        setfName(mshFile.toString());
+        setfName(st);
 
-        file = new File(getfName());
+        file = new File(mshFile.toString());
         br = new BufferedReader(new FileReader(file));
 
         String line;

@@ -1,5 +1,7 @@
 package com.misacfd.meshconverter;
 
+import sun.security.x509.OtherName;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -352,6 +354,12 @@ public class FvMsh {
         bw.write("LOOKUP_TABLE default"); bw.newLine();
 
         for (FvCell cell : cells) {
+            if (cell.getNeighbors().size() < 3) {
+                bw.write(String.format("%s", -1));
+                bw.newLine();
+                break;
+            }
+
             FvCell neighborCell = cell.getNeighbors().get(2);
 
             if (neighborCell != null) {
@@ -367,6 +375,12 @@ public class FvMsh {
         bw.write("LOOKUP_TABLE default"); bw.newLine();
 
         for (FvCell cell : cells) {
+            if (cell.getNeighbors().size() < 4) {
+                bw.write(String.format("%s", -1));
+                bw.newLine();
+                break;
+            }
+
             FvCell neighborCell = cell.getNeighbors().get(3);
 
             if (neighborCell != null) {

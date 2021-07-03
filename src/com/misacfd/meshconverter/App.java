@@ -18,6 +18,7 @@ public class App {
         finiteVolumeMesh.assignBoundaryCondition();
         finiteVolumeMesh.detectNearestNeighbor();
         finiteVolumeMesh.writeTecplot();
+        finiteVolumeMesh.writeVtk();
 
         Instant finish = Instant.now();
         long timeElapsed = Duration.between(start, finish).toMillis();
