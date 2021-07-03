@@ -136,9 +136,58 @@ public class GmshReader {
         line = br.readLine();
         nbElMsh = Integer.parseUnsignedInt(line);
 
+        setNbElm(0);
+
+        for (long i = 0; i < nbElMsh; i++) {
+            line = br.readLine();
+            tokens = line.split(" ");
+
+            NodeIdentMsh nodeIdentMsh =
+                    new NodeIdentMsh.Builder()
+                            .setIdent(Integer.parseUnsignedInt(tokens[0]))
+                            .setElemTyp(Integer.parseUnsignedInt(tokens[1]))
+                            .setNbTags(Integer.parseUnsignedInt(tokens[2]))
+                            .setTag1(Integer.parseUnsignedInt(tokens[3]))
+                            .setTag2(Integer.parseUnsignedInt(tokens[4]))
+                            .build();
+
+            idNodesMsh.add(nodeIdentMsh);
+
+            int elemTyp = idNodesMsh.get((int) i).getElemTyp();
+
+            switch (elemTyp) {
+                case 1:  // 2 - node line.
+                case 15: // 1-node point.
+                case 27: // boundary 5-node edge.
+                    break;
+                case 3:  // 4-node quadrangle.
+                case 37: // 5-node edge quadrangle.
+                    nbElm = nbElm + 1;
+                    break;
+                default:
+                    throw new RuntimeException("Element type is not suppoted. Comming soon !");
+            }
+        }
+
     }
 
     public void constructIdNodes() {
+        for (int i = 0; i < nbElMsh; i++) {
+            int elmTyp = idNodesMsh.get(i).getElemTyp();
 
+            switch (elmTyp) {
+                case 3:
+                case 37:
+                    NodeIdent node =
+                            new NodeIdent.Builder()
+                            .setIdNode(idNodesMsh.get(i).getIdNode())
+                            .build();
+
+                    idNodes.add(node);
+                    break;
+                default:
+                    // do nothing
+            }
+        }
     }
 }

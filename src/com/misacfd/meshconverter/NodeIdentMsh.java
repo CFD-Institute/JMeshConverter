@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class NodeIdentMsh extends NodeIdent {
     private final long ident;
-    private final long elemTyp;
-    private final long nbTags;
-    private final long tag1;
-    private final long tag2;
+    private final int elemTyp;
+    private final int nbTags;
+    private final int tag1;
+    private final int tag2;
 
-    private NodeIdentMsh(Builder builder) {
+    NodeIdentMsh(Builder builder) {
         super(builder);
         this.ident = Objects.requireNonNull(builder.ident, "ident");
         this.elemTyp = Objects.requireNonNull(builder.elemTyp, "elemTyp");
@@ -26,30 +26,30 @@ public class NodeIdentMsh extends NodeIdent {
         return ident;
     }
 
-    public long getElemTyp() {
+    public int getElemTyp() {
         return elemTyp;
     }
 
-    public long getNbTags() {
+    public int getNbTags() {
         return nbTags;
     }
 
-    public long getTag1() {
+    public int getTag1() {
         return tag1;
     }
 
-    public long getTag2() {
+    public int getTag2() {
         return tag2;
     }
 
     public static class Builder extends NodeIdent.Builder<Builder> {
         private Long ident;
-        private Long elemTyp;
-        private Long nbTags;
-        private Long tag1;
-        private Long tag2;
+        private Integer elemTyp;
+        private Integer nbTags;
+        private Integer tag1;
+        private Integer tag2;
 
-        private Builder() {
+        Builder() {
             super();
         }
 
@@ -58,22 +58,22 @@ public class NodeIdentMsh extends NodeIdent {
             return this;
         }
 
-        public Builder setElemTyp(long elemTyp) {
+        public Builder setElemTyp(int elemTyp) {
             this.elemTyp = elemTyp;
             return this;
         }
 
-        public Builder setNbTags(long nbTags) {
+        public Builder setNbTags(int nbTags) {
             this.nbTags = nbTags;
             return this;
         }
 
-        public Builder setTag1(long tag1) {
+        public Builder setTag1(int tag1) {
             this.tag1 = tag1;
             return this;
         }
 
-        public Builder setTag2(long tag2) {
+        public Builder setTag2(int tag2) {
             this.tag2 = tag2;
             return this;
         }
