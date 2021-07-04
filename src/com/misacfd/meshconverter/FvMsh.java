@@ -47,39 +47,15 @@ public class FvMsh {
             aCell.setIdent(i);
 
             NodeIdent nodeIdent = mshReader.getIdNodes().get(i);
-            long idNode = nodeIdent.getIdNode().get(5);
 
-            for (Point node : coordNodes) {
-                if (idNode == node.getIdent()) {
-                    vertex.add(node);
-                    break;
-                }
-            }
+            for (int j = 5; j < 9; j++) {
+                long idNode = nodeIdent.getIdNode().get(j);
 
-            idNode = nodeIdent.getIdNode().get(6);
-
-            for (Point node : coordNodes) {
-                if (idNode == node.getIdent()) {
-                    vertex.add(node);
-                    break;
-                }
-            }
-
-            idNode = nodeIdent.getIdNode().get(7);
-
-            for (Point node : coordNodes) {
-                if (idNode == node.getIdent()) {
-                    vertex.add(node);
-                    break;
-                }
-            }
-
-            idNode = nodeIdent.getIdNode().get(8);
-
-            for (Point node : coordNodes) {
-                if (idNode == node.getIdent()) {
-                    vertex.add(node);
-                    break;
+                for (Point node : coordNodes) {
+                    if (idNode == node.getIdent()) {
+                        vertex.add(node);
+                        break;
+                    }
                 }
             }
 
