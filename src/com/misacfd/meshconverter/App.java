@@ -17,8 +17,12 @@ public class App {
         finiteVolumeMesh.assignFaces();
         finiteVolumeMesh.assignBoundaryCondition();
         finiteVolumeMesh.detectNearestNeighbor();
-        finiteVolumeMesh.writeTecplot();
-        finiteVolumeMesh.writeVtk();
+
+        IMeshExporter vtkMeshExporter = new VtkMeshExporter();
+        vtkMeshExporter.writeUnstructuredQuadMesh(gmshReader, finiteVolumeMesh.getCells());
+
+        IMeshExporter tecplotMeshExporter = new TecplotMeshExporter();
+        tecplotMeshExporter.writeUnstructuredQuadMesh(gmshReader, finiteVolumeMesh.getCells());
 
         Instant finish = Instant.now();
         long timeElapsed = Duration.between(start, finish).toMillis();

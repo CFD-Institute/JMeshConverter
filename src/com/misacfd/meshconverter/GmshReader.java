@@ -7,13 +7,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GmshReader {
-    private long nbNode;
+public class GmshReader extends BaseMeshReader implements IMeshReader {
+    protected long nbNode;
     private long nbElMsh;
     private long nbElm;
-    private String fName;
-    private List<Point> coordNodes;
-    private List<NodeIdent> idNodes;
+    protected String fName;
+    protected List<Point> coordNodes;
+    protected List<NodeIdent> idNodes;
     private List<NodeIdentMsh> idNodesMsh;
 
     private static GmshReader instance = new GmshReader();
