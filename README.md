@@ -1,12 +1,6 @@
-# MisaCFDJava
+# CFDJava
 At this early stage, this code is a Java version of [GmshToVtkAndTecplotCpp11](https://github.com/truongd8593/GmshToVtkAndTecplotCpp11).
 I will add CFD solvers to this repo later on.
-
-# Why is it named as MisaCFD?
-
-* CFD stands for computational fluid dynamics.
-
-* Misa is my nickname when I play CS Source with my colleagues at Axon Active :)
 
 # Features
 
@@ -15,3 +9,7 @@ I will add CFD solvers to this repo later on.
 * CFD aspects: conventional finite volume solver.
 
 * Design patterns: my Java implementation makes use of some design patterns eg. singleton, builder patterns.
+
+# To do
+
+* Mesh converter for delaundo.
